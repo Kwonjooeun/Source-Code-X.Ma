@@ -13,10 +13,11 @@ NMSE = []
 SNR = [0, 5, 10, 15, 20]
 # SNR = [0, 5, 15, 20]
 for snr in SNR:
-    test = 'test_snr_' + str(snr) + '_cr_' + str(cr) + '.mat'
-    mat = h5py.File(test)
-    x_test = mat['x_test']
-    x_test = np.transpose(x_test, [2, 1, 0])
+#     test = 'test_snr_' + str(snr) + '_cr_' + str(cr) + '.mat'
+    test = 'H_test.mat'
+    mat = scipy.io.loadmat(test)
+    x_test = mat['H_test']
+#     x_test = np.transpose(x_test, [2, 1, 0])
     x_test = x_test.astype('float32')  # 训练变量类型转换
     # test = 'old_375/H_test.mat'
     # mat = h5py.File(test)
@@ -25,13 +26,13 @@ for snr in SNR:
     # x_test = x_test.astype('float32')  # 训练变量类型转换
 
     file = 'model_new_D' + '_cr_' + str(cr) + '_snr_' + str(snr)
-    outfile = "result_2/saved_model/%s.json" % file
+    outfile = "result_5/saved_model/%s.json" % file
     # outfile = "old_375/%s.json" % file
     json_file = open(outfile, 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     net = model_from_json(loaded_model_json, custom_objects={'k': k})
-    outfile = 'result_2/saved_model/%s.h5' % file
+    outfile = 'result_5/saved_model/%s.h5' % file
     # outfile = "old_375/%s.h5" % file
     net.load_weights(outfile)
 

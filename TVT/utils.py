@@ -184,12 +184,12 @@ def add_common_layers(y):
 def residual_block_decoded(y):
     shortcut = y
 
-    # y = Conv2D(2, kernel_size=(3, 3), padding='same', data_format='channels_first')(y)
-    # y = add_common_layers(y)
-    #
-    # y = Conv2D(4, kernel_size=(3, 3), padding='same', data_format='channels_first')(y)
-    # y = add_common_layers(y)
-    #
+    y = Conv2D(2, kernel_size=(3, 3), padding='same', data_format='channels_first')(y)
+    y = add_common_layers(y)
+    
+    y = Conv2D(4, kernel_size=(3, 3), padding='same', data_format='channels_first')(y)
+    y = add_common_layers(y)
+    
     y = Conv2D(8, kernel_size=(3, 3), padding='same', data_format='channels_first')(y)
     y = add_common_layers(y)
 

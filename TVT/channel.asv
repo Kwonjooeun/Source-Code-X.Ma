@@ -40,9 +40,9 @@ for i =1:itermax
 %     H_new_test(i,2,:,:) = imag(H_channel);
     disp(['Finished','  ',num2str(i),'/',num2str(itermax)])
 end 
-% disp([H_train])
+disp([H_train])
 % H_new_test = reshape(H_new_test, itermax, 2*fft_len*N_BS);
-save H_train_2 H_train 
+save H_train_2 H_train
 % save H_new_test H_new_test
 disp('it is finished')
 
